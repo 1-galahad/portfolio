@@ -1,0 +1,142 @@
+<Gerenciador>: #ScreenManager
+    #Inicial:
+    #    name: 'inicial'
+    Menu:
+        name: 'menu'
+
+    oprestonmesmo:
+        name: 'principal'
+
+    userhub:
+        name: 'painel'
+
+<Inicial>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 200
+
+        Label:
+            text: 'Qual seu nome?'
+        TextInput:
+            id: Usernome
+
+        Button:
+            on_release: root.usuarionome()
+
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        Image:
+            source: "ImagesContentBox/mainlogo.png"
+            size_hint_y: None
+            height: 190
+            allow_stretch: True
+        Button:
+            text: 'Falar com o Preston'
+            on_release: app.root.current = 'principal'
+        Button:
+            text: 'Assistente'
+            on_release: app.root.current = 'painel'
+        Button:
+            text: 'Sair'
+            on_release: app.stop()
+
+<userhub>: #ID: painel
+    BoxLayout:
+        orientation:'vertical'
+        #padding: 100
+        #spacing: 10
+
+
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Preston'
+                    on_release: app.root.current = 'menu'
+
+        test:
+        opcoespainel:
+
+<test>:
+    size_hint: .5, .5
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    do_default_tab: False
+
+    TabbedPanelItem:
+        text: 'primeira aba'
+        Label:
+            text: 'Conteudo da primeira aba'
+
+    TabbedPanelItem:
+        text: 'segunda aba'
+        Label:
+            text: 'Conteudo da segunda aba'
+
+    TabbedPanelItem:
+        text: 'terceira aba'
+        Label:
+            text: 'Conteudo da terceira aba'
+<opcoespainel>:
+    orientation: 'horizontal'
+    Button:
+        text: 'Cerebro'
+    Button:
+        text: 'Configuracoes'
+    layoutpainel:
+<layoutpainel>:
+    orientation:'horizontal'
+    Button:
+        text: 'opcoes'
+    Button:
+        text: 'opcoes'
+
+<oprestonmesmo>:  #ID: principal  #Botão que precisa clicar no menu para chegar aqui: "Falar com o Preston"
+    BoxLayout:
+        orientation: 'vertical'
+        #padding: 100
+        #spacing: 10
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Preston'
+                    on_release: app.root.current = 'menu'
+
+                ActionButton:
+                    text: 'Configuracoes'
+                    on_release: app.root.current = 'painel'
+
+                ActionSeparator:
+
+                ActionButton:
+                    text: 'Menu'
+                    on_release: app.root.current = 'menu'
+
+                ActionSeparator:
+
+                ActionButton:
+                    text: 'Sair'
+                    on_release:app.stop()
+
+
+        Label:
+        TextInput: #Isso é uma função de input de texto cujo o ID é USERinput
+            id: USERinput
+
+        Button:
+            text: 'Submit'
+            on_release: root.pegaessetxt()
+
+        Label:
+            text: '' #vai ter que ser uma variavel e mudar de acordo com a resp em ogpbrain.pyw
+            id: respostadopreston
+
+        avaliador:
+
+<avaliador>:
+    orientation: 'horizontal'
+    Button:
+        text: 'Positivo'
+    Button:
+        text: 'Negativo'

@@ -1,0 +1,7 @@
+Se você quiser ver quais as vozes disponíveis no seu sistema, rode o seguinte código. Ele vai testar todas as vozes e mostrar o ID de cada uma. É só anotar a que você quer usar e substituir o ID que você anotou na linha engine.setProperty('voice',voice.id)engine = pyttsx.init()
+voices = engine.getProperty('voices')
+for voice in voices:
+   print(void.id)
+   engine.setProperty('voice', voice.id)
+   engine.say('Um texto qualquer.')
+engine.runAndWait()?
